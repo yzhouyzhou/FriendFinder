@@ -36,11 +36,10 @@
                                 <input type="text" class="form-control" id="your-name" value="Nigel">
                             </div>
                             <div class="form-group">
-                                <label for="image">Link to Photo Image (Required)</label>
+                                <label for="your-image">Link to Photo Image (Required)</label>
                                 <input type="text" class="form-control" id="your-image"
                                     value="http://www.petsworld.in/blog/wp-content/uploads/2014/09/funny-cat.jpg">
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -190,8 +189,8 @@
 
     $(".submit").on("click", function (event) {
         event.preventDefault();
-        if($("#your-name").val().trim().length === 0){
-            alert("Sorry! you must fill in your name");
+        if($("#your-name").val().trim().length === 0 || $("#your-image").val().trim().length === 0){
+            alert("Sorry! you must fill in your name or your picture");
             return;
         }
 
@@ -222,10 +221,8 @@
 
         $.post("/api/friends", newFriend,
             function (data) {
-                // If a table is available... tell user they are booked.
                 console.log(data);
-                // alert("Yay! found your best match!" + data.friendName, data.phote);
-
+                
                 $("#match-display").empty();
                 $("#match-display").html("<h2> Your best match -" + data.friendName + "</h2>");
                 var matchPicture = $("<img>");
@@ -237,6 +234,18 @@
 
                 // Clear the form when submitting
                 $("#your-name").val("");
+                $("#your-image").val("");
+                $("#question-1-answer").val("1");
+                $("#question-2-answer").val("1");
+                $("#question-3-answer").val("1");
+                $("#question-4-answer").val("1");
+                $("#question-5-answer").val("1");
+                $("#question-6-answer").val("1");
+                $("#question-7-answer").val("1");
+                $("#question-8-answer").val("1");
+                $("#question-9-answer").val("1");
+                $("#question-10-answer").val("1");
+
             }
         );
     });
