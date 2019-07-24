@@ -33,7 +33,7 @@
                         <form role="form" action="POST">
                             <div class="form-group">
                                 <label for="your-name">Name (Required)</label>
-                                <input type="text" class="form-control" id="your-name" value="Nigel">
+                                <input type="text" class="form-control" id="your-name" value="">
                             </div>
                             <div class="form-group">
                                 <label for="your-image">Link to Photo Image (Required)</label>
@@ -51,23 +51,21 @@
                 <!-- Reservation Page -->
                 <div class="card">
                     <div class="card-header">
-                        Questions :
+                        Questions : (1 disagree to 5 strong agree)
                     </div>
                     <div class="card-body">
                         <form role="form" action="POST">
                             <div class="form-group col-lg-8">
-                                <label for="question-1"> 1. Your mind is always buzzing with unexplored ideas and
-                                    plans.</label>
+                                <label for="question-1"> 1. You like to travel and explorer the new things.</label>
                                 <select class="form-control" id="question-1-answer">
                                     <option value=1 selected>Select an Option</option>
-                                    <option value=1>1 less agree</option>
+                                    <option value=1>1</option>
                                     <option value=2>2</option>
                                     <option value=3>3</option>
                                     <option value=4>4</option>
-                                    <option value=5>5 strong agree</option>
+                                    <option value=5>5</option>
                                 </select>
-                                <label for="question-2"> 2. Your mind is always buzzing with unexplored ideas and
-                                    plans.</label>
+                                <label for="question-2"> 2. You are an animal lover.</label>
                                 <select class="form-control" id="question-2-answer">
                                     <option value="1" selected>Select an Option</option>
                                     <option value="1">1</option>
@@ -76,8 +74,7 @@
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                 </select>
-                                <label for="question-2"> 3. Your mind is always buzzing with unexplored ideas and
-                                    plans.</label>
+                                <label for="question-2"> 3. You rarely get carried away by fantasies and ideas.</label>
                                 <select class="form-control" id="question-3-answer">
                                     <option value="1" selected>Select an Option</option>
                                     <option value="1">1</option>
@@ -86,8 +83,7 @@
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                 </select>
-                                <label for="question-4"> 4. Your mind is always buzzing with unexplored ideas and
-                                    plans.</label>
+                                <label for="question-4"> 4. You prefer to live in a big city than small town.</label>
                                 <select class="form-control" id="question-4-answer">
                                     <option value="1" selected>Select an Option</option>
                                     <option value="1">1</option>
@@ -96,8 +92,7 @@
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                 </select>
-                                <label for="question-5"> 5. Your mind is always buzzing with unexplored ideas and
-                                    plans.</label>
+                                <label for="question-5"> 5. People can rarely upset you.</label>
                                 <select class="form-control" id="question-5-answer">
                                     <option value="1" selected>Select an Option</option>
                                     <option value="1">1</option>
@@ -106,8 +101,7 @@
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                 </select>
-                                <label for="question-6"> 6. Your mind is always buzzing with unexplored ideas and
-                                    plans.</label>
+                                <label for="question-6"> 6. You are A night person.</label>
                                 <select class="form-control" id="question-6-answer">
                                     <option value="1" selected>Select an Option</option>
                                     <option value="1">1</option>
@@ -116,8 +110,7 @@
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                 </select>
-                                <label for="question-7"> 7. Your mind is always buzzing with unexplored ideas and
-                                    plans.</label>
+                                <label for="question-7"> 7. You are A WORKAHOLIC.</label>
                                 <select class="form-control" id="question-7-answer">
                                     <option value="1" selected>Select an Option</option>
                                     <option value="1">1</option>
@@ -126,8 +119,7 @@
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                 </select>
-                                <label for="question-8"> 8. Your mind is always buzzing with unexplored ideas and
-                                    plans.</label>
+                                <label for="question-8"> 8. As a gift, you like a box of chocolates.</label>
                                 <select class="form-control" id="question-8-answer">
                                     <option value="1" selected>Select an Option</option>
                                     <option value="1">1</option>
@@ -136,8 +128,8 @@
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                 </select>
-                                <label for="question-9"> 9. Your mind is always buzzing with unexplored ideas and
-                                    plans.</label>
+                                <label for="question-9"> 9. You are easily feel happy enjoying in the small
+                                    things.</label>
                                 <select class="form-control" id="question-9-answer">
                                     <option value="1" selected>Select an Option</option>
                                     <option value="1">1</option>
@@ -164,8 +156,10 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="match-display"></div>
-
+        <div class="row">
+            <div class="col-lg-8" id="match-display">
+            </div>
+        </div>
     </div>
 
     <footer class="footer">
@@ -182,14 +176,10 @@
 
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
-    // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
-    // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
-    // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
-    // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
 
     $(".submit").on("click", function (event) {
         event.preventDefault();
-        if($("#your-name").val().trim().length === 0 || $("#your-image").val().trim().length === 0){
+        if ($("#your-name").val().trim().length === 0 || $("#your-image").val().trim().length === 0) {
             alert("Sorry! you must fill in your name or your picture");
             return;
         }
@@ -212,29 +202,25 @@
             ]
         };
 
-        console.log(newFriend);
-
-        // This line is the magic. It"s very similar to the standard ajax function we used.
-        // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
-        // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
-        // depending on if a tables is available or not.
-
         $.post("/api/friends", newFriend,
             function (data) {
                 console.log(data);
-                
+
                 $("#match-display").empty();
-                $("#match-display").html("<h2> Your best match -" + data.friendName + "</h2>");
+
+                $("#match-display").html("<h2> Your best match - " + data.friendName + "</h2>");
+                var nameTag = $("<hr>");
+                // $("#match-display").append("<br>");
                 var matchPicture = $("<img>");
                 matchPicture.attr("src", data.photo);
                 matchPicture.attr("width", "350px");
-                matchPicture.attr("height", "350px");
-                // $("#match-display").append("<hr>");
-                $("#match-display").append(matchPicture);
+                matchPicture.attr("height", "320px");
+                $("#match-display").append(nameTag, matchPicture);
 
                 // Clear the form when submitting
                 $("#your-name").val("");
-                $("#your-image").val("");
+                // do not clear it just for easier testing
+                // $("#your-image").val("");
                 $("#question-1-answer").val("1");
                 $("#question-2-answer").val("1");
                 $("#question-3-answer").val("1");
@@ -245,7 +231,6 @@
                 $("#question-8-answer").val("1");
                 $("#question-9-answer").val("1");
                 $("#question-10-answer").val("1");
-
             }
         );
     });

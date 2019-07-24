@@ -1,8 +1,13 @@
 {
   "name": "FriendFinder",
   "version": "1.0.0",
-  "description": "FriendFinder",
+  "description": "",
   "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -17,10 +22,5 @@
   "bugs": {
     "url": "https://github.com/yzhouyzhou/FriendFinder/issues"
   },
-  "homepage": "https://github.com/yzhouyzhou/FriendFinder#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {}
+  "homepage": "https://github.com/yzhouyzhou/FriendFinder#readme"
 }
