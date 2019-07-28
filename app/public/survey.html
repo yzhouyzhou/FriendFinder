@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
@@ -150,23 +152,39 @@
                                 </select>
                             </div>
                         </form>
-                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                        <button type="submit" class="btn btn-primary submit" data-toggle="modal"
+                            data-target="#myModal">Submit</button>
 
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-8" id="match-display">
+        <!-- The Modal -->
+        <div class="modal" id="myModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Your best match - </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h2 id="match-name"></h2>
+                        <img id="match-image" src="" alt="Match Image" width=350>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p><a href="/home">Home</a>|<a href="/survey">Survey</a>|<a href="/api/friends">Friend List</a></p>
-        </div>
-    </footer>
+        <footer class="footer">
+            <div class="container">
+                <p><a href="/home">Home</a>|<a href="/survey">Survey</a>|<a href="/api/friends">Friend List</a></p>
+            </div>
+        </footer>
 
     </div>
 
@@ -206,16 +224,9 @@
             function (data) {
                 console.log(data);
 
-                $("#match-display").empty();
-
-                $("#match-display").html("<h2> Your best match - " + data.friendName + "</h2>");
-                var nameTag = $("<hr>");
-                // $("#match-display").append("<br>");
-                var matchPicture = $("<img>");
-                matchPicture.attr("src", data.photo);
-                matchPicture.attr("width", "350px");
-                matchPicture.attr("height", "320px");
-                $("#match-display").append(nameTag, matchPicture);
+                $("#match-name").text(data.friendName);
+                $("#match-image").attr("src", data.photo);
+                $('#myModal').modal("show");
 
                 // Clear the form when submitting
                 $("#your-name").val("");

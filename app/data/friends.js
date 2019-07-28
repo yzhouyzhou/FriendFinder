@@ -7,7 +7,7 @@
 
 var friends = [
   {
-    name: "Tom Smith",
+    name: "Ding Ding",
     photo: "http://www.petsworld.in/blog/wp-content/uploads/2014/09/cat.jpg",
     score: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
   },
